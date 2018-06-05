@@ -1,0 +1,76 @@
+.divider {
+    height: 30px;
+}
+
+.bottom-divider {
+    height: 130px;
+}
+
+.headline {
+    padding: 10px 0px;
+}
+
+.admin-nav-item {
+    font-size: 18px;
+}
+
+.admin-navbar {
+    border: 1px solid #bbb;
+    border-width: 0px 0px 1px 0px;
+}
+
+.admin-gallery-img-box {
+    padding: 15px;
+}
+
+.project-gallery-img-box {
+    height: 150px;
+    background-position: top right;
+    background-size: cover;
+}
+
+.project-gallery-action-box {
+    height: 40px;
+    line-height: 40px;
+}
+
+.droppable-img-zone {
+    border-width: 2px;
+    border-style: dashed;
+    line-height: 150px;
+    text-align: center;
+    font-size: 32px;
+    border-color: #bbb;
+    color: #bbb;
+    display: block;
+}
+
+.droppable-img-zone:hover {
+    cursor: pointer;
+}
+
+.project-image-upload {
+    visibility: hidden;
+}
+
+.no-underline li a {
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 960px) {
+    .left-arrange {
+        float: right !important;
+    }
+    .mobile-screen {
+        display: none;
+    }
+    .prev-next-container {
+        margin-top: -160px !important;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .desktop-screen {
+        display: none;
+    }
+}

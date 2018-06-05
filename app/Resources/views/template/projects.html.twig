@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="inner">
+        <section class="mb-xl">
+          <div class="container mb-md">
+            <div class="grid">
+              <div class="col-3">
+                <h2 class="grid-title">Projects</h2>
+              </div>
+              <div class="col-5 text-right">
+                <nav id="filters">
+                  <ul class="filters">
+                    <li><a href="#" data-filter="grid-item" class="{% if type == null %}active{% endif %} filter">All</a></li>
+                    {% for cat in categories %}
+                        <li>
+                            <a href="#" data-filter="{% if cat.name == 'UX/UI' %}{{ cat.name|replace({'/': ''}) }}{% elseif cat.name == "Mix 'n' Trix" %}{{ cat.name|replace({"Mix 'n' Trix": 'MixnTrix'}) }}{% else %}{{ cat.name|replace({' ': ''}) }}{% endif %}" class="filter
+                                {% if type and cat.id == type %}active{% endif %}
+                            ">{{ cat.name }}</a>
+                        </li>
+                    {% endfor %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div id="project-grid" class="masonry-grid">
+                {% for p in projects %}
+                    <a href="{{ path('singleproject', {'id': p.id}) }}" class="
+                        {% for cat in categories %}
+                            {% if cat.id == p.category %}
+                                {% if cat.name == 'UX/UI' %}
+                                    {{ cat.name|replace({'/': ''}) }}
+                                {% elseif cat.name == "Mix 'n' Trix" %}
+                                    {{ cat.name|replace({"Mix 'n' Trix": 'MixnTrix'}) }}
+                                {% else %}
+                                    {{ cat.name|replace({' ': ''}) }}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        grid-item col-4"
+                        {% for cat in categories %}
+                            {% if type != null and p.category == cat.id and type != cat.id %}
+                                style="display: none"
+                            {% endif %}
+                        {% endfor %}
+                        >
+                        <div class="thumb"><img src="{{ asset('upload/') ~ p.thumbnailImg }}"></div>
+                        <div class="caption">
+                            <div class="title">{{ p.name }}</div>
+                            <div class="subtitle">
+                                {% for cat in categories %}
+                                    {% if cat.id == p.category %}
+                                        {{ cat.name }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+          </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    <div class="divider"></div>
+    <h2 class="headline">Add project</h2>
+    {{ form_start(form) }}
+        <div class="form-group">
+            <label for="project-bg-image">Background image</label>
+            <input type="file" name="project[background_img]" id="project-bg-image" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.background_img) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="project-portfolio-image">Portfolio image</label>
+            <input type="file" name="project[portfolio_img]" id="project-portfolio-image" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.portfolio_img) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="project-thumbnail-image">Thumbnail image</label>
+            <input type="file" name="project[thumbnail_img]" id="project-thumbnail-image" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.thumbnail_img) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectname">Project name</label>
+            <input type="text" name="project[name]" class="form-control" id="projectname" placeholder="Project name"
+                {% if values %}
+                    value="{{ values.name }}"
+                {% endif %}
+            >
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.name) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectcategory">Category</label>
+            <select class="form-control" name="project[category]" id="projectcategory">
+                {% if values %}
+                    {% for cat in categories %}
+                        {% if cat == values.category %}
+                            <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if categories is defined and categories %}
+                    {% for cat in categories %}
+                        <option value="{{ cat.id }}">
+                            {{ cat.name }}
+                        </option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.category) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectdescription">Project description</label>
+            <textarea class="form-control" name="project[description]" rows="5" id="projectdescription">{% if values %}{{ values.name }}{% else %}Project description{% endif %}</textarea>
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectclient">Client</label>
+            <input type="text" name="project[client]" class="form-control" id="projectclient" placeholder="Project client"
+                {% if values %}
+                    value="{{ values.client }}"
+                {% endif %}
+            >
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.client) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectyear">Year</label>
+            <input type="text" name="project[year]" class="form-control" id="projectyear" placeholder="Project year"
+                {% if values %}
+                    value="{{ values.year }}"
+                {% endif %}
+            >
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.year) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projecttypes">Types</label>
+            <input type="text" name="project[types]" class="form-control" id="projecttypes" placeholder="Project types"
+                {% if values %}
+                    value="{{ values.types }}"
+                {% endif %}
+            >
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.types) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="projectagency">Agency</label>
+            <input type="text" name="project[agency]" class="form-control" id="projectagency" placeholder="Project agency"
+                {% if values %}
+                    value="{{ values.agency }}"
+                {% endif %}
+            >
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.types) }}
+            </div>
+        </div>
+        <div class="divider"></div>
+        {#<h3>Gallery</h3>#}
+        {#<div class="row">#}
+            {#<div class="col-md-2 admin-gallery-img-box">#}
+                {#<label class="project-gallery-img-box droppable-img-zone" for="projectimage">+</label>#}
+                {#<input type="file" name="projectimage" class="project-image-upload" id="projectimage">#}
+            {#</div>#}
+        {#</div>#}
+        <button type="submit" value="submit" name="submit" class="btn btn-primary">Save</button>
+    {{ form_end(form, {'render_rest': false}) }}
+    <div class="bottom-divider"></div>
+{% endblock %}

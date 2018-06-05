@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+</head>
+<body>
+<main style="max-width: 1040px; margin: 0 auto;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light admin-navbar" {% if app.request.get('_route') == 'login' %}style="display: none"{% endif %}>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link admin-nav-item" href="{{ path('project_index') }}">Projects</a>
+                <a class="nav-item nav-link admin-nav-item" href="{{ path('categories_index') }}">Categories</a>
+                <a class="nav-item nav-link admin-nav-item" href="{{ path('profile_index') }}">Profile</a>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-item nav-link admin-nav-item" href="{{ path('logout') }}" style="float: right">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="wrapper" style="padding: 0px 15px">
+        {% block body %}{% endblock %}
+    </div>
+</main>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

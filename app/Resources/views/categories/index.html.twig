@@ -1,0 +1,16 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    <div class="divider"></div>
+    <h2 class="headline">Categories
+        <a href="{{ path('category_new') }}" style="float: right;">
+            <button type="button" class="btn btn-dark">Add category +</button>
+        </a>
+    </h2>
+    <div class="list-group">
+        {% if categories %}
+            {% for c in categories %}
+                <a href="{{ path('category_edit', {'id': c.id}) }}" class="list-group-item list-group-item-action">{{ c.name }}</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

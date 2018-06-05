@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">#}
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/animsition.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/core.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/elements.css') }}">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>#}
+    </head>
+    <body>
+        <div id="wrapper" class="animsition">
+            {{ include('template/header.html.twig') }}
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>
+        <script src="{{ asset('js/vendor.js') }}"></script>
+        <script src="{{ asset('modules/img-scroller/img-scroller.js') }}"></script>
+        <script src="{{ asset('modules/tera-lightbox/tera-lightbox.js') }}"></script>
+        <script src="{{ asset('modules/titan-slider/titan-slider.js') }}"></script>
+        <script src="{{ asset('js/functions.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+        <script>$('#home-slider').titanSlider();</script>
+    </body>
+</html>

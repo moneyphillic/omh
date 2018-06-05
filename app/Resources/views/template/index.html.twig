@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="inner">
+        <section class="behind-header">
+            <div id="home-slider" class="titanSlider fh fw">
+                <ul class="slides">
+                    {% if projects is defined and projects %}
+                    {% for p in projects %}
+                    <li class="slide dark">
+                        <div class="hero fs">
+                            <div style="background-image: url({{ asset('upload/') ~ p.backgroundImg }});" class="bg faded"></div>
+                            <div class="vcenter">
+                                <div class="container">
+                                    <div class="grid">
+                                        <div class="col-1">{{ p.year }}</div>
+                                        <div class="col-7">
+                                            <div class="label"></div><a href="{{ path('singleproject', {'id': p.id}) }}" class="project-link">
+                                            <h1 class="stripe animatedText">{{ p.name }}</h1></a>
+                                            {% set types = p.types|split(',') %}
+                                            {% for t in types %}
+                                                <div class="label">{{ t }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    </div>
+{% endblock %}

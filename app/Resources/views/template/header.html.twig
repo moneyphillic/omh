@@ -1,0 +1,64 @@
+<div id="loader" class="fh">
+    <section class="vcenter">
+        <div class="container">
+            <div class="indicator"> <span class="number">00</span><span class="unit">%</span>
+                <div class="loadbar">
+                    <div class="inner"></div>
+                </div>
+            </div>
+            <div class="img-count"><span class="loaded"></span><span class="description">images loaded</span></div>
+        </div>
+    </section>
+</div>
+<header id="main-header">
+    <div class="container">
+        <div class="grid">
+            <nav class="main-nav">
+                <div class="responsive-nav">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li class="col-1 brand"><a href="{{ path('homepage') }}"><img alt="Peel" src="{{ asset('images/logo.svg') }}" class="default"></a></li>
+                    <li class="col-1 has-dropdown left-arrange mobile-screen">
+                        <a href="{{ path('projects') }}" class="nav-link undefined">Projects</a>
+                        <ul class="dropdown">
+                            {% if categories is defined and categories %}
+                                {% for cat in categories %}
+                                    <li><a href="{{ path('projects', {'type': cat.id}) }}" class="nav-link undefined">{{ cat.name }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="col-1 left-arrange mobile-screen"><a href="{{ path('profile') }}" class="nav-link undefined">I'm Omar</a>
+                    <li class="col-1 left-arrange mobile-screen"><a href="{{ path('contactme') }}" class="nav-link undefined">Contact me</a>
+
+                    <li class="col-1 left-arrange desktop-screen"><a href="{{ path('contactme') }}" class="nav-link undefined">Contact me</a>
+                    <li class="col-1 left-arrange desktop-screen"><a href="{{ path('profile') }}" class="nav-link undefined">I'm Omar</a>
+                    <li class="col-1 has-dropdown left-arrange desktop-screen">
+                        <a href="{{ path('projects') }}" class="nav-link undefined">Projects</a>
+                        <ul class="dropdown">
+                            {% if categories is defined and categories %}
+                                {% for cat in categories %}
+                                    <li><a href="{{ path('projects', {'type': cat.id}) }}" class="nav-link undefined">{{ cat.name }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </li>
+                        {#</li>#}
+                    {#<li class="col-1 col-offset-1"><a href="journal.html" class="nav-link undefined">Journal</a>#}
+                        {#<ul class="dropdown">#}
+                            {#<li><a href="journal.html" class="nav-link undefined">Journal - Overview</a>#}
+                            {#</li>#}
+                            {#<li><a href="journal-single.html" class="nav-link undefined">Journal - Article</a>#}
+                            {#</li>#}
+                        {#</ul>#}
+                    {#</li>#}
+                    {#<li class="col-1 col-offset-1"><a href="contact.html" class="nav-link undefined">Contact</a>#}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

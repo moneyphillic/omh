@@ -1,0 +1,29 @@
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            ignore_case: true
+    providers:
+        db_provider:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            provider: db_provider
+            form_login:
+                login_path: login
+                check_path: login
+                always_use_default_target_path: true
+                default_target_path: project_index
+            logout:
+                path: logout
+                target: login
+    access_control:
+        - { path: ^/adminproject, roles: ROLE_ADMIN }
+        - { path: ^/adminprofile, roles: ROLE_ADMIN }
+        - { path: ^/admincategories, roles: ROLE_ADMIN }

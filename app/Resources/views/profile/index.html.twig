@@ -1,0 +1,78 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    {% if errors is defined and errors %}
+        {% set err = true %}
+    {% else %}
+        {% set err = false %}
+    {% endif %}
+    <div class="divider"></div>
+    <h2 class="headline">Profile</h2>
+    {{ form_start(form) }}
+        <div class="form-group">
+            <img src="{{ asset('upload/') ~ profile.backgroundImg }}" alt="" style="width: 50px;">
+            <label for="project-bg-image">Background image</label>
+            <input type="file" name="profile[background_img]" id="project-bg-image" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.background_img) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="profileheadline">Headline</label>
+            <input type="text" name="profile[headline]" id="profileheadline" class="form-control" value="{{ profile.headline }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.headline) }}</div>
+        </div>
+        <div class="form-group">
+            <label for="profiledescription">Profile description</label>
+            <textarea class="form-control" name="profile[text]" rows="5" id="profiledescription">{{ profile.text }}</textarea>
+            {{ form_errors(form.text) }}
+        </div>
+        <div class="form-group">
+            <label for="profilehobbies">Hobbies</label>
+            <input type="text" name="profile[hobbies]" id="profilehobbies" class="form-control" value="{{ profile.hobbies }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.hobbies) }}</div>
+        </div>
+        {# <div class="form-group">
+            <label for="profilesocialchannels">Social Media Channels</label>
+            <input type="text" name="profile[social_channels]" id="profilesocialchannels" class="form-control" value="{{ profile.socialChannels }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.social_channels) }}</div>
+        </div> #}
+        <div class="form-group">
+            <label for="profilefacebook">Facebook</label>
+            <input type="text" name="profile[facebook]" id="profilefacebook" class="form-control" value="{{ profile.facebook }}">
+        </div>
+        <div class="form-group">
+            <label for="profileinstagram">Instagram</label>
+            <input type="text" name="profile[instagram]" id="profileinstagram" class="form-control" value="{{ profile.instagram }}">
+        </div>
+        <div class="form-group">
+            <label for="profilelinkedin">Linkedin</label>
+            <input type="text" name="profile[linkedin]" id="profilelinkedin" class="form-control" value="{{ profile.linkedin }}">
+        </div>
+        <div class="form-group">
+            <label for="profileclients">Clients</label>
+            <input type="text" name="profile[clients]" id="profileclients" class="form-control" value="{{ profile.clients }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.clients) }}</div>
+        </div>
+        <div class="form-group">
+            <label for="profilestudios">Studios</label>
+            <input type="text" name="profile[studios]" id="profilestudios" class="form-control" value="{{ profile.studios }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.studios) }}</div>
+        </div>
+        <div class="form-group">
+            <label for="profiletools">Tools</label>
+            <input type="text" name="profile[tools]" id="profiletools" class="form-control" value="{{ profile.tools }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.tools) }}</div>
+        </div>
+        <div class="form-group">
+            <label for="profileemail">Email</label>
+            <input type="text" name="profile[mail]" id="profileemail" class="form-control" value="{{ profile.mail }}">
+            <div style="color: red; padding: 5px 0px">{{ form_errors(form.mail) }}</div>
+        </div>
+        <div class="form-group">
+            <label for="profilephone">Phone</label>
+            <input type="text" name="profile[phone]" id="profilephone" class="form-control" value="{{ profile.phone }}">
+        </div>
+        <button type="submit" value="submit" name="submit" class="btn btn-primary">Save</button>
+        <div class="bottom-divider"></div>
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

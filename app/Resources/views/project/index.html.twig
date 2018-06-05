@@ -1,0 +1,18 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    <div class="divider"></div>
+    <h2 class="headline">Projects
+        <a href="{{ path('project_new') }}" style="float: right;">
+            <button type="button" class="btn btn-dark">Add project +</button>
+        </a>
+    </h2>
+    <div class="list-group">
+        {% if projects %}
+            {% for p in projects %}
+                <a href="{{ path('project_edit', {'id': p.id}) }}" class="list-group-item list-group-item-action">
+                    {{ p.name }}
+                </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
