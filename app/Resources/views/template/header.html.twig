@@ -20,7 +20,7 @@
                     <div class="bar"></div>
                 </div>
                 <ul class="nav-links">
-                    <li class="col-1 brand"><a href="{{ path('homepage') }}"><img alt="Peel" src="{{ asset('images/logo.svg') }}" class="default"></a></li>
+                    <li class="col-1 brand"><a href="{{ path('homepage') }}"><img alt="Omar Hamza" src="{% if shared %}{{ asset('upload/' ~ shared.logo) }}{% endif %}" class="default" style="width: 130px;"></a></li>
                     <li class="col-1 has-dropdown left-arrange mobile-screen">
                         <a href="{{ path('projects') }}" class="nav-link undefined">Projects</a>
                         <ul class="dropdown">

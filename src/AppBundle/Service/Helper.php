@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Design;
 use SplFileInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Swift_Message;
@@ -39,5 +40,10 @@ class Helper extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function getSharedObjects() {
+        $design = $this->getDoctrine()->getRepository(Design::class)->find(2);
+        return $design;
     }
 }

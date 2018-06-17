@@ -16,6 +16,8 @@ class TemplateController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $helper = $this->get('helper');
+
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository(Categories::class)->findAll();
         $projects = $em->getRepository(Project::class)->findAll();
@@ -25,6 +27,7 @@ class TemplateController extends Controller
             'categories' => $categories ? $categories : null,
             'projects' => $projects ? $projects : null,
             'profile' => $profile ? $profile : null,
+            'shared' => $helper->getSharedObjects()
         ));
     }
 
@@ -33,6 +36,8 @@ class TemplateController extends Controller
      */
     public function projectsAction(Request $request)
     {
+        $helper = $this->get('helper');
+
         $categories = $this->getDoctrine()->getRepository(Categories::class)->findAll();
         $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
 
@@ -44,6 +49,7 @@ class TemplateController extends Controller
             'categories' => $categories,
             'projects' => $projects,
             'type' => isset($type) ? $type : null,
+            'shared' => $helper->getSharedObjects()
         ));
     }
 
@@ -52,6 +58,8 @@ class TemplateController extends Controller
      */
     public function singleProjectAction(Request $request, $id)
     {
+        $helper = $this->get('helper');
+
         $project = $this->getDoctrine()->getRepository(Project::class)->find($id);
         $allProjects = $this->getDoctrine()->getRepository(Project::class)->findAll();
         for ($i = 0; $i < count($allProjects); $i++) {
@@ -80,6 +88,7 @@ class TemplateController extends Controller
             'ntypes' => $nTypes,
             'projectbefore' => $projectBefore,
             'projectafter' => $projectAfter,
+            'shared' => $helper->getSharedObjects()
         ));
     }
 
@@ -88,6 +97,8 @@ class TemplateController extends Controller
      */
     public function profileAction(Request $request)
     {
+        $helper = $this->get('helper');
+
         $profile = $this->getDoctrine()->getRepository(Profile::class)->find(1);
 
         $hobbies = $profile->getHobbies();
@@ -128,6 +139,7 @@ class TemplateController extends Controller
             'clients' => $nClients,
             'studios' => $nStudios,
             'tools' => $nTools,
+            'shared' => $helper->getSharedObjects()
         ));
     }
 
@@ -136,10 +148,13 @@ class TemplateController extends Controller
      */
     public function contactMeAction(Request $request)
     {
+        $helper = $this->get('helper');
+
         $profile = $this->getDoctrine()->getRepository(Profile::class)->find(1);
 
         return $this->render('template/contactme.html.twig', array(
             'profile' => $profile,
+            'shared' => $helper->getSharedObjects()
         ));
     }
 

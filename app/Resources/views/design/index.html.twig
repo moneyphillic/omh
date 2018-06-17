@@ -1,0 +1,25 @@
+{% extends 'baseadmin.html.twig' %}
+{% block body %}
+    <div class="divider"></div>
+    <h2 class="headline">Design</h2>
+    {{ form_start(form) }}
+        <div class="form-group">
+            <img src="{{ asset('upload/') ~ design.logo }}" alt="" style="width: 50px;">
+            <label for="design_logo">Logo</label>
+            <input type="file" name="design[logo]" id="design_logo" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.logo) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <img src="{{ asset('upload/') ~ design.relicon }}" alt="" style="width: 50px;">
+            <label for="design_relicon">Rel Icon</label>
+            <input type="file" name="design[relicon]" id="design_relicon" class="form-control">
+            <div style="color: red; padding: 5px 0px">
+                {{ form_errors(form.logo) }}
+            </div>
+        </div>
+        <button type="submit" value="submit" name="submit" class="btn btn-primary">Save</button>
+        <div class="bottom-divider"></div>
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}
